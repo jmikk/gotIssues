@@ -63,7 +63,7 @@ for k in puppets:
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=deck">Deck</a></p></td>""".format(canonical))
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=deck/value_deck=1/template-overall=none">Value Deck (nostyle)</a></p></td>""".format(canonical))
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=deck/value_deck=1">Value Deck</a></p></td>""".format(canonical))
-	links.write("""<td><p><a target="_blank" href="{}/auto">Link to Card</a></p></td>""".format(canonical, canonical, canonical))
+	links.write("""<td><p><a target="_blank" href="{}">Link to Card</a></p></td>""".format(canonical, canonical, canonical))
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=telegrams">Telegrams</a></p></td>""".format(canonical))
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=settings">Settings</a></p></td>""".format(canonical))
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=tgsettings">TG settings</a></p></td>""".format(canonical))
