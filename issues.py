@@ -38,9 +38,9 @@ for every in names:
 		print(ISSUEid.OPTION.get('id'))
 		with open(NewListOfIssues, 'a+') as f:
 			# https://www.nationstates.net/nation=PUPPET/page=enact_dilemma/choice-1=1/dilemma=26
-			if(ISSUEid.get('id')=407)
+			if(ISSUEid.get('id')=='407'):
 				f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/')
-			else
+			else:
 				f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"\n")
 		#print('{}'.format(options.get('id')))
 		#print('{}'.format(ISSUEid.get('id')))           
