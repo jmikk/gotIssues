@@ -1,0 +1,17 @@
+
+// ==UserScript==
+// @name         NsDilemmaAutoClose
+// @version      0.1
+// @namespace    dithpri.__nsh__deprec
+// @description  Auto-close resolved dilemma windows
+// @author       dithpri
+// @noframes
+// @match        https://www.nationstates.net/page=enact_dilemma/*
+// @grant        window.close
+// @run-at       document-start
+// ==/UserScript==
+
+(function() {
+    'use strict';
+     window.close();
+})();
