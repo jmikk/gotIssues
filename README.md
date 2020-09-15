@@ -1,7 +1,9 @@
 # gotIssues
 An even faster way to answer issues with python
 
-You will need to install pip, lxml, and beautifulsoup3
+You will need to install pip, lxml, and beautifulsoup4
+if you need help installing pip check out this: https://www.liquidweb.com/kb/install-pip-windows/
+if you need help installing lxml, beautifulsoup4, and requests run the .bat file included in the hub here. 
 
 then put your puppets in the csv file with all the names in the first column and passwords in the secound column. 
 
