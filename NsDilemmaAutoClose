@@ -6,7 +6,7 @@
 // @author       9003
 // @match        https://www.nationstates.net/container=*/page=enact_dilemma/choice-*=1/dilemma=*/template-overall=none/nation=*/asnation=*
 // @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/dilemma=*/nation=*/template-overall=none
-// @grant        none
+// @grant        window.close
 // ==/UserScript==
 
 
