@@ -1,21 +1,32 @@
 // ==UserScript==
 // @name         AutoCloseIssuePage
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  button focus.
 // @author       9003
-// @match        https://www.nationstates.net/container=*/page=enact_dilemma/choice-*=1/dilemma=*/template-overall=none/nation=*/asnation=*
-// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/dilemma=*/nation=*/template-overall=none
+// @match        https://www.nationstates.net/container=*/page=enact_dilemma/choice-*=1/dilemma=*/template-overall=*
+// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/dilemma=*/nation=*/template-overall=*
 // @grant        window.close
 // ==/UserScript==
 
 
 // Your code here...
 (function() {
-    'use strict';
-    if(document.getElementsByClassName("button lootboxbutton").length > 0){
-        document.getElementsByClassName("button lootboxbutton")[0].focus();
-    }
+	'use strict';
+	if(document.getElementsByClassName("button lootboxbutton").length > 0){
+		document.getElementsByClassName("button lootboxbutton")[0].focus();
+	}
     else
-    {window.close()};
+    {window.close();}
+const button=document.getElementsByClassName("button lootboxbutton")[0];
+      button.addEventListener("click", (ev) => { // fires when button is clicked
+            if (button.style.display == "none") {  // check if button is hidden
+                ev.preventDefault();               // it is, prevent the "open pack" request from being submitted
+                return;                            // return early, nothing left to do
+            }
+
+            button.style.display = "none";         // hide the button
+                                                   // "open pack" request automatically submitted after this function returns
+        });
+
 })();
