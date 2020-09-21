@@ -5,7 +5,7 @@ from time import sleep
 import os
 import sys
 
-Version = 1.2
+Version = 1.2.1
 print("This is Version: "+str(Version))
 
 UserAgent=input("Please enter your main nations name: ")
@@ -41,7 +41,7 @@ for every in names:
 			if(ISSUEid.get('id')=='407'):
 				f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/')
 			else:
-				f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container"+every+"\n")
+				f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"\n")
 		#print('{}'.format(options.get('id')))
 		#print('{}'.format(ISSUEid.get('id')))           
 	index=index+1
