@@ -5,7 +5,7 @@ from time import sleep
 import os
 import sys
 
-Version = 1.3.2
+Version = "1.3.2"
 print("This is Version: "+str(Version))
 
 UserAgent=input("Please enter your main nations name: ")
