@@ -14,7 +14,7 @@
 // Your code here...
 (function() {
 	'use strict';
-	if(!window.location.href.endsWith("/pulleventmode=true")) window.close();
+	if(!window.location.href.contains("/pulleventmode=true")) window.close();
 
 	if(document.getElementsByClassName("button lootboxbutton").length > 0){
 		document.getElementsByClassName("button lootboxbutton")[0].focus();
