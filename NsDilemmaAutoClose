@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AutoCloseIssuePage2
 // @namespace    http://tampermonkey.net/
-// @version      1.9003.1
+// @version      1.9003.2
 // @description  button focus.
 // @author       9003
 // @match        https://www.nationstates.net/container=*/page=enact_dilemma/choice-*=1/dilemma=*/template-overall=*
