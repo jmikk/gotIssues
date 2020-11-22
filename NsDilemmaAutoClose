@@ -6,6 +6,7 @@
 // @author       9003
 // @match        https://www.nationstates.net/container=*/page=enact_dilemma/choice-*=1/dilemma=*/template-overall=*
 // @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/dilemma=*/nation=*/template-overall=*
+// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/container=*/dilemma=*/template-overall=none
 // @updateURL    https://github.com/jmikk/gotIssues/raw/master/NsDilemmaAutoClose.user.js
 // @grant        window.close
 // ==/UserScript==
@@ -14,7 +15,7 @@
 // Your code here...
 (function() {
 	'use strict';
-	if(!window.location.href.contains("/pulleventmode=true")) window.close();
+	if(!window.location.href.endsWith("/pulleventmode=true")) window.close();
 
 	if(document.getElementsByClassName("button lootboxbutton").length > 0){
 		document.getElementsByClassName("button lootboxbutton")[0].focus();
