@@ -15,7 +15,7 @@ Pulleventmode=input("Would you like to open packs in line while you answer issue
 if(Pulleventmode=='y'):
 	Pulleventmode='yes';
 
-#Pulleventcard=input("Would you like to pull event a card inline with these packs? (yes or no):")
+Pulleventcard=input("Would you like to pull event a card inline with these packs? (yes or no):")
 
 
 if(Pulleventcard == "yes"):
@@ -44,7 +44,7 @@ for every in names:
 	if(Pullcount>4 and Pulleventcard == 'yes'):
 		
 			f.writelines('https://www.nationstates.net/page=deck/card='+pulleventcardID+'/season='+pulleventcardSeason+"/pull_event_card\n")
-		Pullcount=0	
+			Pullcount=0	
 	else:		
 		r = requests.get('https://www.nationstates.net/cgi-bin/api.cgi/', headers={'User-Agent': UserAgent, 'X-Password': password[index].replace(" ","_")}, params={'nation':every, 'q':'issues'})
 		sleep(.8)
