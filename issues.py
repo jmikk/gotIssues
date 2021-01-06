@@ -5,7 +5,7 @@ from time import sleep
 import os
 import sys
 
-Version = "1.3.4"
+Version = "1.4.5"
 print("This is Version: "+str(Version))
 
 UserAgent=input("Please enter your main nations name: ")
@@ -32,7 +32,6 @@ with open("puppet.csv") as csv_file:
 		names.append(row[0])
 		password.append(row[1])
 index=0
-Pullcount=0;
 if os.path.exists(NewListOfIssues):
   os.remove(NewListOfIssues)
 
@@ -41,36 +40,31 @@ for every in names:
 #	print(every)
 #	print(password[index])
 	
-	if(Pullcount>4 and Pulleventcard == 'yes'):
-		
-			f.writelines('https://www.nationstates.net/page=deck/card='+pulleventcardID+'/season='+pulleventcardSeason+"/pull_event_card\n")
-			Pullcount=0	
-	else:		
-		r = requests.get('https://www.nationstates.net/cgi-bin/api.cgi/', headers={'User-Agent': UserAgent, 'X-Password': password[index].replace(" ","_")}, params={'nation':every, 'q':'issues'})
-		sleep(.8)
-		print("grabing " + every + " this can take up to a secound depending on if the server hamsters are playing nice with the API Gnome.")
-		soup = BeautifulSoup(r.content, "xml")
-		for ISSUEid in soup.find_all('ISSUE'):
-			Pullcount=Pullcount+1
-			print(every)
-			print(ISSUEid.get('id'))
-			print(ISSUEid.OPTION.get('id'))
-			with open(NewListOfIssues, 'a+') as f:
-				# https://www.nationstates.net/nation=PUPPET/page=enact_dilemma/choice-1=1/dilemma=26
-				if(ISSUEid.get('id')=='407'):
-					if(Pulleventmode != "yes"):
-						f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
-					else:
-						f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none\n")
+	r = requests.get('https://www.nationstates.net/cgi-bin/api.cgi/', headers={'User-Agent': UserAgent, 'X-Password': password[index].replace(" ","_")}, params={'nation':every, 'q':'issues'})
+	sleep(.7)
+	print("grabing " + every + " this can take up to a bit for the server hamsters to give it to the API Gnomes.")
+	soup = BeautifulSoup(r.content, "xml")
+	for ISSUEid in soup.find_all('ISSUE'):
+		print(every)
+		print(ISSUEid.get('id'))
+		print(ISSUEid.OPTION.get('id'))
+		with open(NewListOfIssues, 'a+') as f:
+			if(Pulleventcard == "yes"):	
+				f.writelines('https://www.nationstates.net/page=deck/card='+pulleventcardID+'/season='+pulleventcardSeason+"/pull_event_card\n")
+			# https://www.nationstates.net/nation=PUPPET/page=enact_dilemma/choice-1=1/dilemma=26
+			if(ISSUEid.get('id')=='407'):
+				if(Pulleventmode != "yes"):
+					f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
 				else:
-					if(Pulleventmode != "yes"):
-						f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none\n")
-					else:
-						f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
-			#print('{}'.format(options.get('id')))
-			#print('{}'.format(ISSUEid.get('id')))           
+					f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none\n")
+			else:
+				if(Pulleventmode != "yes"):
+					f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none\n")
+				else:
+					f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
+		#print('{}'.format(options.get('id')))
+		#print('{}'.format(ISSUEid.get('id')))           
 	index=index+1
 	
-
 print("Done thanks for running this with CMD")
 
