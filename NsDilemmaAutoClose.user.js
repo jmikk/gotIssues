@@ -1,12 +1,13 @@
 // ==UserScript==
-// @name         AutoCloseIssuePage3
+// @name         AutoCloseIssuePage2
 // @namespace    http://tampermonkey.net/
-// @version      1.9003.4
+// @version      1.9003.3
 // @description  button focus.
 // @author       9003
-// @match        https://www.nationstates.net/container=*/page=enact_dilemma/choice-*=1/dilemma=*
-// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/dilemma=*/nation=*
-// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/container=*/dilemma=*
+// @match        https://www.nationstates.net/container=*/page=enact_dilemma/choice-*=1/dilemma=*/template-overall=*
+// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/dilemma=*/nation=*/template-overall=*
+// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/container=*/dilemma=*/template-overall=none
+// @match        https://www.nationstates.net/page=enact_dilemma/choice-*=1/dilemma=*/nation=*/container=*/template-overall=none/pulleventmode=true
 // @match        https://www.nationstates.net/page=deck/card=*/season=*/pull_event_card
 // @match        https://www.nationstates.net/page=deck/card=*/season=*/close
 // @updateURL    https://github.com/jmikk/gotIssues/raw/master/NsDilemmaAutoClose.user.js
@@ -20,7 +21,7 @@
 // Your code here...
 ( function() {
 	'use strict';
-	if(!window.location.href.endsWith("pulleventmode=true")&&!window.location.href.endsWith("/pull_event_card")&&!document.getElementsByClassName("mcollapseplain").length > 0){ window.close()};
+	if(!window.location.href.endsWith("/pulleventmode=true")&&!window.location.href.endsWith("/pull_event_card")&&!document.getElementsByClassName("mcollapseplain").length > 0){ window.close()};
    if(window.location.href.endsWith("/pull_event_card")){
 
 
@@ -37,13 +38,21 @@
          document.getElementById("change_price_button").setAttribute('action','location.href=https://www.nationstates.net/page=deck/card=*/season=*/close')
          document.getElementById("change_price_button").click();
     }
-	if(document.getElementsByClassName("button lootboxbutton").length > 0){
+	if(document.getElementsByClassName("button lootboxbutton").length > 0||window.location.href.endsWith("/pull_event_card")){
 		document.getElementsByClassName("button lootboxbutton")[0].focus();
 	}
     else if(document.getElementsByClassName("mcollapseplain").length > 0)
     {
 
+        //puppet = document.getElementById("entity_name").value;
+
+        //alert('Logging '+ puppet+" in.");
+        //$.post("//www.nationstates.net/", "logging_in=1&nation="+puppet+"&password="+password+"submit=Login&autologin=yes", callback);
+        //alert('moving to main page');
+        //window.location.replace("https://www.nationstates.net/page=deck");
+
     }
+
     else
     {window.close();}
 const button=document.getElementsByClassName("button lootboxbutton")[0];
