@@ -8,6 +8,7 @@ with open('link_list.txt') as f:
 
 puppets = list(filter(None, puppets))
 
+print('The total count of issues is',totalcount)
 #containerise_rules = open('containerise.txt', 'w')
 links = open('9003samazinglistofcards.html', 'w')
 
@@ -53,12 +54,14 @@ tr:hover {
 <table>
 """)
 
+totalcount = len(puppets)
 #containerise_rules.write("@^.*\.nationstates\.net/(.*/)?nation=9003(/.*)?$ , 9003\n")
-for k in puppets:
+for idx, k in enumerate(puppets):
 	canonical = k.lower().replace(" ", "_")
 	escaped_canonical = re.escape(canonical)
 	#containerise_rules.write("@^.*\.nationstates\.net/(.*/)?nation={}(/.*)?$ , {}\n".format(escaped_canonical, k))
 	links.write("""<tr>""");
+	links.write("""<td>{} of {}</td>""".format(idx+1, totalcount));
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=dilemmas/template-overall=none">Issues</a></p></td>""".format(canonical))
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=deck">Deck</a></p></td>""".format(canonical))
 	#links.write("""<td><p><a target="_blank" href="https://www.nationstates.net/nation={}/page=deck/value_deck=1/template-overall=none">Value Deck (nostyle)</a></p></td>""".format(canonical))
