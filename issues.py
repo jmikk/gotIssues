@@ -4,24 +4,19 @@ import csv
 from time import sleep
 import os
 import sys
+import re
 
-Version = "1.4.5"
+Version = "5.5"
 print("This is Version: "+str(Version))
 
 UserAgent=input("Please enter your main nations name: ")
 filename="puppet.csv"
 Pulleventmode=input("Would you like to open packs in line while you answer issues (yes or no):")
+Pulleventmode=Pulleventmode.lower().replace(" ","_")
 
 if(Pulleventmode=='y'):
 	Pulleventmode='yes';
 
-Pulleventcard=input("Would you like to pull event a card inline with these packs? (yes or no):")
-
-
-if(Pulleventcard == "yes"):
-	pulleventcardID=input("What is the ID of the card you want to Pull Event: ")
-	pulleventcardSeason=input("What is the season of the card you want to Pull Event: ")
-	
 
 names=[]
 password=[]
@@ -46,21 +41,22 @@ for every in names:
 	soup = BeautifulSoup(r.content, "xml")
 	for ISSUEid in soup.find_all('ISSUE'):
 		print(every)
-		print(ISSUEid.get('id'))
-		print(ISSUEid.OPTION.get('id'))
 		with open(NewListOfIssues, 'a+') as f:
-			if(Pulleventcard == "yes"):	
-				f.writelines('https://www.nationstates.net/page=deck/card='+pulleventcardID+'/season='+pulleventcardSeason+"/pull_event_card\n")
-			# https://www.nationstates.net/nation=PUPPET/page=enact_dilemma/choice-1=1/dilemma=26
 			if(ISSUEid.get('id')=='407'):
 				if(Pulleventmode != "yes"):
 					f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
+					print("issue 407")
 				else:
+					print("issue 407")
 					f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none\n")
 			else:
 				if(Pulleventmode != "yes"):
+					print(ISSUEid.get('id'))
+					print(ISSUEid.OPTION.get('id'))
 					f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none\n")
 				else:
+					print(ISSUEid.get('id'))
+					print(ISSUEid.OPTION.get('id'))
 					f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
 		#print('{}'.format(options.get('id')))
 		#print('{}'.format(ISSUEid.get('id')))           
