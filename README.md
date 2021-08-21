@@ -3,18 +3,18 @@ An even faster way to answer issues with python
 
 You will need to install pip, lxml, beautifulsoup4, and requests.
 
-if you need help installing pip check out this: https://www.liquidweb.com/kb/install-pip-windows/
-if you need help installing lxml, beautifulsoup4, and requests run the .bat file included in the hub here. 
+if you need help installing pip check out this: https://pip.pypa.io/en/stable/installation/
+if you need help installing lxml, beautifulsoup4, and requests run the .bat or .sh file depending on your operating system. 
 
-then put your puppets in the csv file with all the names in the first column and passwords in the secound column. 
+then put your puppets in the csv file with all the names in the first column and passwords in the second column. 
 
 Then run the issues.py program this will generate all of the links
 afterwards click the Sheet Maker.py to make the HTML sheet and spam enter to your hearts content. 
 
 
-Install the NsDilemmaAutoClose in tamper monkey (unless you already have it from Racoda's first issue answering scrpit)
+Install the NsDilemmaAutoClose script in tamper monkey (unless you already have it from Racoda's first issue answering scrpit)
 
-DISCLAIMER 
+# DISCLAIMER 
 TL;DR: READ THIS, read the rules ask for help if you need help understanding scripts, 
 
 YOU A HUMAN MUST PUSH A BUTTON TO DO AN EVENT. 
