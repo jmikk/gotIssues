@@ -3,8 +3,9 @@ An even faster way to answer issues with python
 
 You will need to install pip, lxml, beautifulsoup4, and requests.
 
-if you need help installing pip check out this: https://pip.pypa.io/en/stable/installation/
-if you need help installing lxml, beautifulsoup4, and requests run the .bat or .sh file depending on your operating system. 
+If you need help installing pip check out this: https://pip.pypa.io/en/stable/installation/
+
+If you need help installing lxml, beautifulsoup4, and requests run the .bat or .sh file depending on your operating system. 
 
 then put your puppets in the csv file with all the names in the first column and passwords in the second column. 
 
