@@ -7,11 +7,11 @@ import sys
 import re
 
 Version = "5.5"
-print("This is Version: "+str(Version))
+print("GotIssues version "+str(Version))
 
-UserAgent=input("Please enter your main nations name: ")
+UserAgent=input("Please enter your main nation's name: ")
 filename="puppet.csv"
-Pulleventmode=input("Would you like to open packs in line while you answer issues (yes or no):")
+Pulleventmode=input("Would you like to open packs in line while you answer issues (yes or no): ")
 Pulleventmode=Pulleventmode.lower().replace(" ","_")
 
 if(Pulleventmode=='y'):
@@ -37,7 +37,7 @@ for every in names:
 	
 	r = requests.get('https://www.nationstates.net/cgi-bin/api.cgi/', headers={'User-Agent': UserAgent, 'X-Password': password[index].replace(" ","_")}, params={'nation':every, 'q':'issues'})
 	sleep(.7)
-	print("grabing " + every + " this can take up to a bit for the server hamsters to give it to the API Gnomes.")
+	print("Grabbing " + every + "; this can take a while for the server hamsters to give it to the API Gnomes.")
 	soup = BeautifulSoup(r.content, "xml")
 	for ISSUEid in soup.find_all('ISSUE'):
 		print(every)
@@ -62,5 +62,4 @@ for every in names:
 		#print('{}'.format(ISSUEid.get('id')))           
 	index=index+1
 	
-print("Done thanks for running this with CMD")
-
+print("Done, thanks for using GotIssues")
