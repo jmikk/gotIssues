@@ -55,21 +55,12 @@ for every in names:
 			print(every)
 			with open(NewListOfIssues, 'a+') as f:
 				if(ISSUEid.get('id')=='407'):
-					if(Pulleventmode != "yes"):
-						f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
-						print("issue 407")
-					else:
-						print("issue 407")
-						f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none\n")
+					print("issue 407")
+					f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none/autoclose=1\n")
 				else:
-					if(Pulleventmode != "yes"):
-						print(ISSUEid.get('id'))
-						print(ISSUEid.OPTION.get('id'))
-						f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none\n")
-					else:
-						print(ISSUEid.get('id'))
-						print(ISSUEid.OPTION.get('id'))
-						f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none/pulleventmode=true\n")
+					print(ISSUEid.get('id'))
+					print(ISSUEid.OPTION.get('id'))
+					f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none/autoclose=1\n")
 			#print('{}'.format(options.get('id')))
 			#print('{}'.format(ISSUEid.get('id')))           
 		index=index+1
