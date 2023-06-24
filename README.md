@@ -13,8 +13,7 @@ Then run the issues.py program this will generate all of the links
 afterwards click the Sheet Maker.py to make the HTML sheet and spam enter to your hearts content. 
 
 
-Install the NsDilemmaAutoClose and NsIssueCompactorRand scripts in tamper monkey
-
+Install autoclose=1.js into tampermonkey to auto close tabs when using got issues.
 # DISCLAIMER 
 TL;DR: READ THIS, read the rules ask for help if you need help understanding scripts, 
 
