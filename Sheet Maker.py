@@ -4,6 +4,8 @@ import re
 
 with open('link_list.txt') as f:
 	puppets = f.read().split('\n')
+with open('pack_list.txt') as h:
+	packs = h.read().split('\n')
 
 puppets = list(filter(None, puppets))
 totalcount = len(puppets)
@@ -60,7 +62,18 @@ for idx, k in enumerate(puppets):
 	links.write("""<td>{} of {}</td>""".format(idx+1, totalcount));
 	links.write("""<td><p><a target="_blank" href="{}">Link to Card</a></p></td>""".format(canonical, canonical, canonical))
 	links.write("""</tr>\n""")
-links.write("""<td><p><a target="_blank" href="https://this-page-intentionally-left-blank.org/">Done!</a></p></td>""".format(canonical))
+
+for each in packs:
+	each = each.lower().replace(" ", "_")
+	links.write("""<tr>""");
+	links.write("""<td>X of X</td>""")
+	links.write(f'<td><p><a target="_blank" href="{each}">Link to Card</a></p></td>')
+	links.write("""</tr>\n""")
+
+
+
+
+links.write("""<td><p><a target="_blank" href="https://this-page-intentionally-left-blank.org/">Done!</a></p></td><td><p><a target="_blank" href="https://this-page-intentionally-left-blank.org/">Done!</a></p></td>""".format(canonical))
 links.write("""
 </table>
 <script>
