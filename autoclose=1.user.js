@@ -5,7 +5,8 @@
 // @description  try to take over the world!
 // @author       9003
 //@match         *://*/*autoclose=1 
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=nationstates.net// @grant        none
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=nationstates.net// 
+//@grant        none
 // ==/UserScript==
 
 (function() {
