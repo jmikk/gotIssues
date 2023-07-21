@@ -17,11 +17,11 @@ fileLocation = pathlib.Path(__file__).parent.resolve()
 
 def on_paste(event):
     text = event.widget.selection_get(selection="CLIPBOARD")
-    event.widget.insert(END, text)
+    event.widget.insert("end", text)
 
 def generate_issues_list(user_agent, puppet_csv):
     if user_agent == '' or puppet_csv == '':
-        text.insert(END, "Missing user agent or puppet list")
+        text.insert("end", "Missing user agent or puppet list")
         root.update_idletasks()
         return
 
@@ -30,17 +30,17 @@ def generate_issues_list(user_agent, puppet_csv):
 
     try:
         Version = "5.6"
-        text.insert(END, "GotIssues version " + str(Version) + "\n")
+        text.insert("end", "GotIssues version " + str(Version) + "\n")
         root.update_idletasks()
         
         puppet_csv = puppet_csv.rstrip()
         puppet_lines = puppet_csv.splitlines()
         NewListOfIssues = 'link_list.txt'
         NewListOfPacks = 'pack_list.txt'
-        if os.path.exists(NewListOfIssues):
+        if os.path.exists('link_list.txt'):
             os.remove(NewListOfIssues)
 
-        if os.path.exists(NewListOfPacks):
+        if os.path.exists('pack_list.txt'):
             os.remove(NewListOfPacks)
 
         for line in puppet_lines:
@@ -49,10 +49,10 @@ def generate_issues_list(user_agent, puppet_csv):
             index=0
 
             nation = nation.replace(" ", "_")
-            r = requests.get('https://www.nationstates.net/cgi-bin/api.cgi/', headers={'User-Agent': user_agent, 'X-Password': password.replace(" ","_")}, params={'nation':nation, 'q':'issues+packs'})
+            r = requests.get('https://www.nationstates.net/cgi-bin/api.cgi/', headers={'User-Agent': user_agent, 'X-Password': password}, params={'nation':nation, 'q':'issues+packs'})
             soup = BeautifulSoup(r.content, "xml")
             sleep(.7)
-            text.insert(END, "Grabbing " + nation + "; this can take a while for the server hamsters to give it to the API Gnomes.")
+            text.insert("end", "Grabbing " + nation + "; this can take a while for the server hamsters to give it to the API Gnomes.\n")
             root.update_idletasks()
             with open(NewListOfPacks, "a+") as h:
                 count=0
@@ -60,21 +60,13 @@ def generate_issues_list(user_agent, puppet_csv):
                     while(count < int(toOpenPACKS.text)):
                         count= count+1
                         h.writelines(f"https://www.nationstates.net/page=deck/nation={nation}/?open_loot_box=1/autoclose=1\n")
+            with open(NewListOfIssues, 'a+') as f:
                 for ISSUEid in soup.find_all('ISSUE'):
-                    with open(NewListOfIssues, 'a+') as f:
-                        if(ISSUEid.get('id')=='407'):
-                            f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+nation+"/container="+nation+"/template-overall=none/autoclose=1\n")
-                        else:
-                            f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+nation+"/container="+nation+"/template-overall=none/autoclose=1\n")
-                index=index+1
-
-        if not os.path.exists('link_list.txt'):
-            with open('link_list.txt') as f:
-                pass
-
-        if not os.path.exists('pack_list.txt'):
-            with open('pack_list.txt') as f:
-                pass
+                    if(ISSUEid.get('id')=='407'):
+                        f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+nation+"/container="+nation+"/template-overall=none/autoclose=1\n")
+                    else:
+                        f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+nation+"/container="+nation+"/template-overall=none/autoclose=1\n")
+            index=index+1
 
         with open('link_list.txt') as f:
             puppets = f.read().split('\n')
@@ -84,7 +76,7 @@ def generate_issues_list(user_agent, puppet_csv):
 
         puppets = list(filter(None, puppets))
         totalcount = len(puppets)
-        text.insert(END, 'The total count of issues is', totalcount, ' now generating html, this will take a bit...')
+        text.insert("end", 'The total count of issues is', totalcount, ' now generating html, this will take a bit...\n')
         root.update_idletasks()
         links = open('9003samazinglistofcards.html', 'w')
 
@@ -164,44 +156,56 @@ def generate_issues_list(user_agent, puppet_csv):
         </script>
         </body>
         """)
-        text.insert(END, "Done, thanks for using GotIssues")
+        text.insert("end", "Done, thanks for using GotIssues")
     except Exception as e:
         error_msg = f"Error: {str(e)}"
-        text.insert(END, error_msg + "\n")
+        text.insert("end", error_msg + "\n")
 
 
 root = Tk()
 root.title("Got Issues GUI")
-root.geometry("500x400")
+root.geometry("500x500")
 
 frame = Frame(root, bg='grey', bd=1)
 frame.pack(expand=True, fill=BOTH, padx=10, pady=10)
 
-user_agent = Entry(frame, font=('', 10), width=40)
-user_agent.grid(row=0, column=1, columnspan=2, pady=5)
-
 user_agent_label = Label(frame, text="Enter your main nation's name:", font=(20))
-user_agent_label.grid(row=1, column=0, sticky='w', padx=5)
+user_agent_label.pack(fill="x")
 
-puppet_csv = Text(frame, font=('', 10), width=40, height=5)
-puppet_csv.grid(row=2, column=1, columnspan=2, pady=5)
+user_agent = Entry(frame, font=('', 10), width=40)
+user_agent.pack(fill="x", pady=5)
 
 puppet_info_label = Label(frame, text="Put your puppets in here with this format: name,password", font=(20))
-puppet_info_label.grid(row=3, column=0, columnspan=2, pady=5)
+puppet_info_label.pack(fill="x")
+
+puppet_csv = Text(frame, font=('', 10), width=40, height=10)
+puppet_csv.pack(fill="both", expand=True)
 
 button = Button(frame, text="Generate", font=40, command=lambda: generate_issues_list(user_agent.get(), puppet_csv.get("1.0", "end")))
-button.grid(row=4, column=1, columnspan=2, pady=10)
+button.pack(fill="x")
 
-text = Text(frame, font=('', 10), wrap=WORD, width=50, height=15)
-text.grid(row=5, column=0, columnspan=3, pady=5)
-text.bind("<Control-v>", on_paste)
+text_frame = Frame(frame, bg='grey', bd=1)
+text_frame.pack(expand=True, fill=BOTH, pady=5)
+
+text_label = Label(text_frame, text="Output:", font=(20))
+text_label.pack(fill="x")
+
+text = Text(text_frame, font=('', 8), wrap=WORD, width=50, height=5)
+text.pack(fill="both", expand=True)
+
+puppet_csv.bind("<Control-v>", on_paste)
+
+root.grid_rowconfigure(1, weight=0)
+root.grid_rowconfigure(3, weight=0)
+
+text.config(font=('', 8))
 
 filename = "puppet.csv"
 try:
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file)
         for row in csv_reader:
-            puppet_csv.insert(END, f"{row[0]},{row[1]}\n")
+            puppet_csv.insert("end", f"{row[0]},{row[1]}\n")
 except FileNotFoundError:
     print(f"{filename} not found.")
 
