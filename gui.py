@@ -173,6 +173,7 @@ user_agent_label = Label(frame, text="Enter your main nation's name:", font=(20)
 user_agent_label.pack(fill="x")
 
 user_agent = Entry(frame, font=('', 10), width=40)
+user_agent = user_agent + "GotIssuesGUI, Written by 9003 and Scramble, Email: NSWA9002@gmail.com,Discord 9003"
 user_agent.pack(fill="x", pady=5)
 
 puppet_info_label = Label(frame, text="Put your puppets in here with this format: name,password", font=(20))
