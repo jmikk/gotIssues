@@ -6,7 +6,7 @@ import os
 import sys
 import re
 
-Version = "5.6"
+Version = "6"
 print("GotIssues version "+str(Version))
 
 UserAgent=input("Please enter your main nation's name: ")
