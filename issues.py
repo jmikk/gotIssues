@@ -9,7 +9,7 @@ import re
 Version = "6"
 print("GotIssues version "+str(Version))
 
-UserAgent=input("Please enter your main nation's name: ")
+UserAgent=input("Please enter your main nation's name: ")+"Gotissues Written by 9003, Email NSWA9002@gmail.com,discord: 9003, NSNation 9003"
 filename="puppet.csv"
 Pulleventmode="no"
 Pulleventmode=Pulleventmode.lower().replace(" ","_")
