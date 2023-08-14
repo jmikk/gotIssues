@@ -63,9 +63,9 @@ def generate_issues_list(user_agent, puppet_csv):
             with open(NewListOfIssues, 'a+') as f:
                 for ISSUEid in soup.find_all('ISSUE'):
                     if(ISSUEid.get('id')=='407'):
-                        f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+nation+"/container="+nation+"/template-overall=none/User_agent={UserAgent}/Script=GotissuesGUI/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")
+                        f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+nation+"/container="+nation+"/template-overall=none/User_agent="+UserAgent+"/Script=GotissuesGUI/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")
                     else:
-                        f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+nation+"/container="+nation+"/template-overall=none/User_agent={UserAgent}/Script=GotissuesGUI/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")
+                        f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+nation+"/container="+nation+"/template-overall=none/User_agent=+"UserAgent+"/Script=GotissuesGUI/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")
             index=index+1
 
         with open('link_list.txt') as f:
