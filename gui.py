@@ -29,7 +29,7 @@ def generate_issues_list(user_agent, puppet_csv):
     root.update_idletasks()
 
     try:
-        Version = "6"
+        Version = "6.1"
         text.insert("end", "GotIssues version " + str(Version) + "\n")
         root.update_idletasks()
         
