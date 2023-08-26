@@ -54,15 +54,8 @@ for every in names:
 		for ISSUEid in soup.find_all('ISSUE'):
 			print(every)
 			with open(NewListOfIssues, 'a+') as f:
-				if(ISSUEid.get('id')=='407'):
-					print("issue 407")
-					f.writelines('https://www.nationstates.net/page=show_dilemma/dilemma=407/template-overall=none'+"/nation="+every+"/container="+every+"/template-overall=none/User_agent="+UserAgent+"/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")
-				else:
-					print(ISSUEid.get('id'))
-					print(ISSUEid.OPTION.get('id'))
-					f.writelines('https://www.nationstates.net/page=enact_dilemma/choice-'+ISSUEid.OPTION.get('id')+'=1/dilemma='+ISSUEid.get('id')+"/nation="+every+"/container="+every+"/template-overall=none/User_agent="+UserAgent+"/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")
-			#print('{}'.format(options.get('id')))
-			#print('{}'.format(ISSUEid.get('id')))           
+				print(ISSUEid.get('id'))
+				f.writelines(f"https://www.nationstates.net/page=show_dilemma/dilemma={ISSUEid.get('id')}/template-overall=none/nation={every}/container={every}/template-overall=none/User_agent={UserAgent}/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")     
 		index=index+1
 	
 print("Done, thanks for using GotIssues")
