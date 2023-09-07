@@ -59,7 +59,7 @@ right: 0;
 	const issuebtns = document.querySelectorAll("button.button.big.icon.approve");
 	if (issuebtns.length > 0) {
 		document.querySelector("p.dilemmadismissbox > button.big.icon.remove.danger").disabled = true;
-		const chosenButtonNumber = Math.floor(Math.random() * issuebtns.length);
+		const chosenButtonNumber = Math.floor(issuebtns.length);
 		issuebtns[chosenButtonNumber].classList.add("rces-chosen");
 		document.addEventListener("keyup", function (ev) {
 			if (ev.key != "Enter" || ev.repeat) {
