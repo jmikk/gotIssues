@@ -52,9 +52,9 @@ for every in names:
 				count= count+1
 				h.writelines(f"https://www.nationstates.net/page=deck/nation={every}/container=name/?open_loot_box=1/User_agent={UserAgent}/Script=Gotissues/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n")
 		for ISSUEid in soup.find_all('ISSUE'):
-		print(every)
-		with open(NewListOfIssues, 'a+') as f:
-			f.write("https://www.nationstates.net/container={}/nation={}/page=show_dilemma/dilemma={}/template-overall=none/x-enabled-by=gotIssues\n".format(every, every, ISSUEid.get('id'))) 
+			print(every)
+			with open(NewListOfIssues, 'a+') as f:
+				f.write("https://www.nationstates.net/container={}/nation={}/page=show_dilemma/dilemma={}/template-overall=none/x-enabled-by=gotIssues\n".format(every, every, ISSUEid.get('id'))) 
 		index=index+1
 	
 print("Done, thanks for using GotIssues")
