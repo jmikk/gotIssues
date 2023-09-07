@@ -65,7 +65,7 @@ for every in names:
             while count < int(toOpenPACKS.text):
                 count = count + 1
                 h.writelines(
-                    f"https://www.nationstates.net/page=deck/nation={every}/container=name/?open_loot_box=1/template-overall=none//User_agent={UserAgent}/Script=Gotissues/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n"
+                    f"https://www.nationstates.net/page=deck/nation={every}/container={every}/?open_loot_box=1/template-overall=none//User_agent={UserAgent}/Script=Gotissues/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/autoclose=1\n"
                 )
         for ISSUEid in soup.find_all("ISSUE"):
             print(every)
