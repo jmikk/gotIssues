@@ -54,7 +54,7 @@ for every in names:
 		for ISSUEid in soup.find_all('ISSUE'):
 			print(every)
 			with open(NewListOfIssues, 'a+') as f:
-				f.write("https://www.nationstates.net/container={}/nation={}/page=show_dilemma/dilemma={}/template-overall=none/x-enabled-by=gotIssues\n".format(every, every, ISSUEid.get('id'))) 
+				f.write("https://www.nationstates.net/container={}/nation={}/page=show_dilemma/dilemma={}/template-overall=none//User_agent={UserAgent}/Script=Gotissues/Author_Email=NSWA9002@gmail.com/Author_discord=9003/Author_main_nation=9003/\n".format(every, every, ISSUEid.get('id'))) 
 		index=index+1
 	
 print("Done, thanks for using GotIssues")
