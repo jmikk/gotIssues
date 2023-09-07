@@ -2,7 +2,7 @@
 // @name         NsIssueCompactorRand
 // @version      0.4.1
 // @namespace    dithpri.RCES
-// @description  Hide everything except issue buttons and focus on a random option
+// @description  Hide everything except issue buttons and focus on a the middle option
 // @author       dithpri
 // @downloadURL  https://github.com/dithpri/RCES/raw/master/userscripts/issue_answering/NsIssueCompactorRand.user.js
 // @noframes
