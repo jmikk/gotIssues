@@ -53,7 +53,7 @@ right: 0;
 
 `);
 	document.querySelectorAll('form[action^="/page=enact_dilemma/"]').forEach(function (el) {
-		el.action += "/template-overall=none/x-rces=autoclose";
+		el.action += "/template-overall=none/autoclose=1";
 	});
 
 	const issuebtns = document.querySelectorAll("button.button.big.icon.approve");
