@@ -1,3 +1,8 @@
+You will need the following Tampermonkey scripts now they are all located here (if you have old versions of these scripts please disable them)
+NsIssueCompactorRand.js
+autoclose=1.user.js
+
+
 # gotIssues
 An even faster way to answer issues with python
 
